@@ -1,4 +1,4 @@
-## Jython Cassandra Example
+## Cassandra Jython Example
 
 Just a simple Jython project that connects to Cassandra and runs a few queries utilizing the DataStax Java Driver.
 
