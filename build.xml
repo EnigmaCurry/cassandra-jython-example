@@ -16,16 +16,7 @@
     <delete dir="lib/"/>
   </target>
 
-  <target depends="clean, resolve" name="setup">
-    <unzip dest="lib/">
-      <fileset dir=".">
-        <include name="jars/*.jar"/>
-      </fileset>
-    </unzip>
-  </target>
-
-
-  <target depends="setup" name="run">
+  <target depends="resolve" name="run">
     <java classpathref="lib.path.id" classname="org.python.util.jython" failonerror="true">
       <arg value="-Dpython.path=lib/"/>
       <permissions>
