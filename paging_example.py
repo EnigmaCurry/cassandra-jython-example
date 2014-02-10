@@ -1,4 +1,4 @@
-from com.datastax.driver.core import Cluster, BoundStatement
+from com.datastax.driver.core import Cluster, SimpleStatement, BoundStatement
 
 def connect(node):
     cluster = Cluster.builder().addContactPoint(node).build()
@@ -18,7 +18,9 @@ def insert_data(session):
     
     # Query those rows back:
     ids_received = set()
-    results = session.execute('SELECT id, value FROM testks.testcf')
+    stmt = SimpleStatement('SELECT id, value FROM testks.testcf')
+    stmt.setFetchSize(10)
+    results = session.execute(stmt)
     for row in results:
         ids_received.add(row.getInt('id'))
         
