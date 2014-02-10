@@ -1,0 +1,41 @@
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="JythonCassandraExample" default="run">
+
+  <property name="lib.dir" value="lib" />
+  <path id="lib.path.id">
+    <fileset dir="${lib.dir}" />
+  </path>
+    
+  <target name="resolve" description="--> retrieve dependencies with ivy">
+    <ivy:retrieve />
+  </target>
+
+  <property name="jython" location="jars/jython-standalone-2.7-b1.jar"/> 
+  <property name="cassandra-driver" location="jars/cassandra-driver-core-2.0.0-rc3-SNAPSHOT.jar"/> 
+
+  <target name="clean">
+    <delete dir="lib/"/>
+  </target>
+
+  <target depends="clean, resolve" name="setup">
+    <unzip dest="lib/">
+      <fileset dir=".">
+        <include name="jars/*.jar"/>
+      </fileset>
+    </unzip>
+  </target>
+
+
+  <target depends="setup" name="run">
+    <java classpathref="lib.path.id" classname="org.python.util.jython" failonerror="true">
+      <arg value="-Dpython.path=lib/"/>
+      <permissions>
+        <grant
+            class="javax.management.MBeanTrustPermission"
+            name="register"/> 
+        <grant class="java.security.AllPermission"/>
+      </permissions>
+      <arg value="paging_example.py"/>
+    </java>
+  </target>
+
+</project>
