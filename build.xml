@@ -9,9 +9,6 @@
     <ivy:retrieve />
   </target>
 
-  <property name="jython" location="jars/jython-standalone-2.7-b1.jar"/> 
-  <property name="cassandra-driver" location="jars/cassandra-driver-core-2.0.0-rc3-SNAPSHOT.jar"/> 
-
   <target name="clean">
     <delete dir="lib/"/>
   </target>
