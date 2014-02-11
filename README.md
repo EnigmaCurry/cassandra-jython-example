@@ -20,5 +20,8 @@ You need to give ant some extra permissions in order to run the test. Edit $JAVA
       ....
     }
 
+If you are using java from a package install and not using $JAVA_HOME you may need to manually find and edit java.policy as above.
 
+After installing ivy, you may need to copy ivy.jar to where ant can see it, such as: ~/.ant/lib/ivy.jar .
+    
 Then you should just be able to run `ant run` in the root of the checkout to download all the dependencies and run paging_example.py
