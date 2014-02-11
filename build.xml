@@ -16,7 +16,7 @@
     <delete dir="lib/"/>
   </target>
 
-  <target depends="resolve" name="run">
+  <target depends="clean, resolve" name="run">
     <java classpathref="lib.path.id" classname="org.python.util.jython" failonerror="true">
       <arg value="-Dpython.path=lib/"/>
       <permissions>
