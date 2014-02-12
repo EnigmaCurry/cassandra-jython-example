@@ -1,2 +1,4 @@
-lib
+build
+pylib
 *.pyc
+setuptools-2.2.tar.gz

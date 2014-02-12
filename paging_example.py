@@ -32,3 +32,7 @@ def insert_data(session):
 if __name__ == "__main__":
     session = connect("127.0.0.1")
     insert_data(session)
+
+    # WTF... when jython is invoked via ant (fork=true), it never
+    # quits this process unless I am explicit here:
+    exit(0)
