@@ -1,4 +1,6 @@
 build
-pylib
 *.pyc
 setuptools-2.2.tar.gz
+
+tyler: cold_reads_to_emit compact on cold tables
+
